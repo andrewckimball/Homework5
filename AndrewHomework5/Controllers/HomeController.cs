@@ -1,4 +1,5 @@
 ﻿using AndrewHomework5.Models;
+using AndrewHomework5.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,16 +16,31 @@ namespace AndrewHomework5.Controllers
 
         private IBookstoreRespository _repository;
 
+        //Displaying 5 items per page
+        public int PageSize = 5;
+
         public HomeController(ILogger<HomeController> logger, IBookstoreRespository respository)
         {
             _logger = logger;
             _repository = respository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            //Returning the view to display the index.cshtml page
-            return View(_repository.Projects);
+            return View(new ProjectListViewModel
+            {
+                Projects = _repository.Projects
+                                    .OrderBy(p => p.ProjectId)
+                                    .Skip((page - 1) * PageSize)
+                                    .Take(PageSize)
+                                ,
+                PagingInfo = new PageInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = _repository.Projects.Count()
+                }
+            });
         }
 
         public IActionResult Privacy()
