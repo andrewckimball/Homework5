@@ -25,6 +25,7 @@ namespace AndrewHomework5.Controllers
             _repository = respository;
         }
 
+        //Default to page 1, organize by 5 books each page
         public IActionResult Index(int page = 1)
         {
             return View(new ProjectListViewModel

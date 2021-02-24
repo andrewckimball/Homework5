@@ -1,9 +1,15 @@
-﻿@{
+﻿<!--Notes regarding bootstrap commands: Added a "alert" command, a "row" class and learned the
+    color codes and added green to the project using "btn-success"-->
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 @model ProjectListViewModel
-
+<!--Boostrap command addition: Shows the current page-->
+<div class="alert alert-success" role="alert">
+    <strong>You are on Page @Model.PagingInfo.CurrentPage, scroll below for navigation</strong>
+</div>
 
 
 <!--Looping through each book-->
@@ -13,30 +19,43 @@
         <div class="bg-faded p-1">
             <h4>
                 @x.Title
-                <span class="badge badge-pill badge-primary" style="float:right">
+                <span class="badge badge-pill badge-success" style="float:right">
                     <small>@x.Price.ToString("c")</small>
                 </span>
             </h4>
         </div>
-        <div class="card-text p-1">Author: @x.AuthorFirst @x.AuthorLast</div>
-        <div class="card-text p-1">Publisher: @x.Publisher</div>
-        <div class="card-text p-1">ISBN: @x.ISBN</div>
-        <div class="card-text p-1">Classification: @x.Classification</div>
-        <div class="card-text p-1">Category: @x.Category</div>
-        <div class="card-text p-1">Pages: @x.NumberOfPages</div>
-    </div><br />
+
+        <!--Bootstrap command addition: Formatting the data-->
+        <dl class="row">
+            <dt class="col-sm-3">Author</dt>
+            <dd class="col-sm-9">@x.AuthorFirst @x.AuthorLast</dd>
+            <dt class="col-sm-3 text-truncate">Publisher</dt>
+            <dd class="col-sm-9">@x.Publisher</dd>
+            <dt class="col-sm-3">ISBN</dt>
+            <dd class="col-sm-9">@x.ISBN</dd>
+            <dt class="col-sm-3">Classification</dt>
+            <dd class="col-sm-9">@x.Classification</dd>
+            <dt class="col-sm-3">Category</dt>
+            <dd class="col-sm-9">@x.Category</dd>
+            <dt class="col-sm-3">Pages</dt>
+            <dd class="col-sm-9">@x.NumberOfPages</dd>
+        </dl>
+    </div>
+    <br />
 }
 
-<div page-action="Index" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-outline-dark"
-     page-class-selected="btn-primary" class="btn-group pull-right m-1">
-</div>
 
 
+
+
+<!--Code for the navigation at bottom page-->
+<!--Bootstrap addition: Learned color codes and added a green color-->
 <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
      page-class-normal="btn-outline-dark"
-     page-class-selected="btn-primary"
+     page-class-selected="btn-success"
      class="btn-group pull-right m-1"></div>
+
+
 
 <!--Validation for model-->
 <div asp-validation-summary="All"></div>

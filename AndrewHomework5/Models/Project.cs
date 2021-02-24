@@ -39,7 +39,7 @@ namespace AndrewHomework5.Models
         public decimal Price { get; set; }
 
         [Required]
-        public int NumberOfPages { get; set; }  //Additional data
+        public int NumberOfPages { get; set; }  //Additional data to the model for assignment 6
 
     }
 }
