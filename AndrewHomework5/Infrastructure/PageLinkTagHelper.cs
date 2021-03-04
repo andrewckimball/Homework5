@@ -27,6 +27,10 @@ namespace AndrewHomework5.Infrastructure
         public PageInfo PageModel { get; set; }
         public string PageAction { get; set; }
 
+        //Inserting dictionary
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        public Dictionary<string, object> PageUrlvalues { get; set; } = new Dictionary<string, object>();
+
         //CSS classes are used in the index.cshtml page
         public bool PageClassesEnabled { get; set; }
         public string PageClass { get; set; }
@@ -45,6 +49,12 @@ namespace AndrewHomework5.Infrastructure
             for (int i = 1; i <= PageModel.TotalPages; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
+
+                //Adding PageUrlvalues for navigation
+                PageUrlvalues["page"] = i;
+                tag.Attributes["href"] = urlHelper.Action(PageAction,
+                    PageUrlvalues);
+
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
 
                 //Dynamically adding the css

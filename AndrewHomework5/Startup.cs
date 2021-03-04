@@ -57,9 +57,15 @@ namespace AndrewHomework5
 
             app.UseEndpoints(endpoints =>
             {
+                //Endpoints for a URL pattern
+                endpoints.MapControllerRoute("categorypage",
+                    "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" }); 
+ 
+
                 endpoints.MapControllerRoute(
                     "pagination",
-                    "/P{page}",
+                    "Books/{page}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();

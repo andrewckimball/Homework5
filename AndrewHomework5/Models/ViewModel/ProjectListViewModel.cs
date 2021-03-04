@@ -10,5 +10,6 @@ namespace AndrewHomework5.Models.ViewModel
     {
         public IEnumerable<Project> Projects { get; set; }
         public PageInfo PagingInfo { get; set; }
+        public string CurrentCategory { get; set; }
     }
 }

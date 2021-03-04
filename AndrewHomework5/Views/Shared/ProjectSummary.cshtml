@@ -1,0 +1,30 @@
+﻿@model Project
+
+
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-faded p-1">
+        <h4>
+            @Model.Title
+            <span class="badge badge-pill badge-success" style="float:right">
+                <small>@Model.Price.ToString("c")</small>
+            </span>
+        </h4>
+    </div>
+
+    <!--Bootstrap command addition: Formatting the data-->
+    <dl class="row">
+        <dt class="col-sm-3">Author</dt>
+        <dd class="col-sm-9">@Model.AuthorFirst @Model.AuthorLast</dd>
+        <dt class="col-sm-3 text-truncate">Publisher</dt>
+        <dd class="col-sm-9">@Model.Publisher</dd>
+        <dt class="col-sm-3">ISBN</dt>
+        <dd class="col-sm-9">@Model.ISBN</dd>
+        <dt class="col-sm-3">Classification</dt>
+        <dd class="col-sm-9">@Model.Classification</dd>
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9">@Model.Category</dd>
+        <dt class="col-sm-3">Pages</dt>
+        <dd class="col-sm-9">@Model.NumberOfPages</dd>
+    </dl>
+</div>
+<br />

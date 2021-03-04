@@ -7,41 +7,13 @@
 
 @model ProjectListViewModel
 <!--Boostrap command addition: Shows the current page-->
-<div class="alert alert-success" role="alert">
-    <strong>You are on Page @Model.PagingInfo.CurrentPage, scroll below for navigation</strong>
-</div>
-
-
+<!--<div class="alert alert-success" role="alert">
+    <strong>You are on Page "intsert at" Model.PagingInfo.CurrentPage, scroll below for navigation</strong>
+</div>-->
 <!--Looping through each book-->
 @foreach (var x in Model.Projects)
 {
-    <div class="card card-outline-primary m-1 p-1">
-        <div class="bg-faded p-1">
-            <h4>
-                @x.Title
-                <span class="badge badge-pill badge-success" style="float:right">
-                    <small>@x.Price.ToString("c")</small>
-                </span>
-            </h4>
-        </div>
-
-        <!--Bootstrap command addition: Formatting the data-->
-        <dl class="row">
-            <dt class="col-sm-3">Author</dt>
-            <dd class="col-sm-9">@x.AuthorFirst @x.AuthorLast</dd>
-            <dt class="col-sm-3 text-truncate">Publisher</dt>
-            <dd class="col-sm-9">@x.Publisher</dd>
-            <dt class="col-sm-3">ISBN</dt>
-            <dd class="col-sm-9">@x.ISBN</dd>
-            <dt class="col-sm-3">Classification</dt>
-            <dd class="col-sm-9">@x.Classification</dd>
-            <dt class="col-sm-3">Category</dt>
-            <dd class="col-sm-9">@x.Category</dd>
-            <dt class="col-sm-3">Pages</dt>
-            <dd class="col-sm-9">@x.NumberOfPages</dd>
-        </dl>
-    </div>
-    <br />
+    <partial name="ProjectSummary" model="x" />
 }
 
 
@@ -52,7 +24,7 @@
 <!--Bootstrap addition: Learned color codes and added a green color-->
 <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
      page-class-normal="btn-outline-dark"
-     page-class-selected="btn-success"
+     page-class-selected="btn-success" page-url-category="@Model.CurrentCategory"
      class="btn-group pull-right m-1"></div>
 
 
