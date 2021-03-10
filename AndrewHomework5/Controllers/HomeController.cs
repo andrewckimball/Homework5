@@ -26,19 +26,19 @@ namespace AndrewHomework5.Controllers
         }
 
         //Default to page 1, organize by 5 books each page
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             return View(new ProjectListViewModel
             {
                 Projects = _repository.Projects
                                     .Where(p => category == null || p.Category == category)
                                     .OrderBy(p => p.ProjectId)
-                                    .Skip((page - 1) * PageSize)
+                                    .Skip((pageNum - 1) * PageSize)
                                     .Take(PageSize)
                                 ,
                 PagingInfo = new PageInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     //TotalNumItems = _repository.Projects.Count()
                     //If category is null, total pages is normal, if category is specified, count how many of the category exist

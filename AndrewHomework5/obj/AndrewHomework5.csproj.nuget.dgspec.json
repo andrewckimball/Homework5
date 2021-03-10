@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andrewkimball\\source\\repos\\AndrewHomework5\\AndrewHomework5\\AndrewHomework5.csproj": {}
+    "C:\\Users\\andrewkimball\\source\\repos\\Homework5\\AndrewHomework5\\AndrewHomework5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andrewkimball\\source\\repos\\AndrewHomework5\\AndrewHomework5\\AndrewHomework5.csproj": {
+    "C:\\Users\\andrewkimball\\source\\repos\\Homework5\\AndrewHomework5\\AndrewHomework5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andrewkimball\\source\\repos\\AndrewHomework5\\AndrewHomework5\\AndrewHomework5.csproj",
+        "projectUniqueName": "C:\\Users\\andrewkimball\\source\\repos\\Homework5\\AndrewHomework5\\AndrewHomework5.csproj",
         "projectName": "AndrewHomework5",
-        "projectPath": "C:\\Users\\andrewkimball\\source\\repos\\AndrewHomework5\\AndrewHomework5\\AndrewHomework5.csproj",
+        "projectPath": "C:\\Users\\andrewkimball\\source\\repos\\Homework5\\AndrewHomework5\\AndrewHomework5.csproj",
         "packagesPath": "C:\\Users\\andrewkimball\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andrewkimball\\source\\repos\\AndrewHomework5\\AndrewHomework5\\obj\\",
+        "outputPath": "C:\\Users\\andrewkimball\\source\\repos\\Homework5\\AndrewHomework5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andrewkimball\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,11 +44,17 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[5.0.4, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
             }
           },
           "imports": [

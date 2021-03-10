@@ -51,11 +51,11 @@ namespace AndrewHomework5.Infrastructure
                 TagBuilder tag = new TagBuilder("a");
 
                 //Adding PageUrlvalues for navigation
-                PageUrlvalues["page"] = i;
+                PageUrlvalues["pageNum"] = i;
                 tag.Attributes["href"] = urlHelper.Action(PageAction,
                     PageUrlvalues);
 
-                tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                //tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
 
                 //Dynamically adding the css
                 if (PageClassesEnabled)

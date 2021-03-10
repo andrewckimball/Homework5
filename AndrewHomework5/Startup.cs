@@ -1,6 +1,7 @@
 using AndrewHomework5.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,10 +30,19 @@ namespace AndrewHomework5
 
             services.AddDbContext<ProjectDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:Homework5Connection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:Homework5Connection"]);
             });
 
             services.AddScoped<IBookstoreRespository, EFBookstoreRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +61,8 @@ namespace AndrewHomework5
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -59,16 +71,24 @@ namespace AndrewHomework5
             {
                 //Endpoints for a URL pattern
                 endpoints.MapControllerRoute("categorypage",
-                    "{category}/{page:int}",
-                    new { Controller = "Home", action = "Index" }); 
- 
+                    "{category}/{pageNum:int}",
+                    new { Controller = "Home", action = "Index" });
 
-                endpoints.MapControllerRoute(
-                    "pagination",
-                    "Books/{page}",
+                endpoints.MapControllerRoute("page",
+                    "{pageNum:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", pageNum = 1});
+
+                endpoints.MapControllerRoute("pagination",
+                    "Books/{pageNum}",
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             SeedData.EnsurePopulated(app);

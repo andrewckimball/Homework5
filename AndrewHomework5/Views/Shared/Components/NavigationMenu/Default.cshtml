@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<string>
 
 <a class="btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home"
-   asp-route-category="" asp-route-page="1">
+   asp-route-category="" asp-route-pageNum="1">
     Home
 </a>
 
@@ -10,7 +10,7 @@
     <a class="btn btn-block @(category == ViewBag.SelectedCategory ? "btn-success" : "btn-outline-secondary")"
        asp-action="Index" asp-controller="Home"
        asp-route-category="@category"
-       asp-route-page="1">
+       asp-route-pageNum="1">
         @category
     </a>
 }
