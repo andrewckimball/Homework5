@@ -2,13 +2,12 @@
 
 @model AndrewHomework5.Pages.DonateModel
 
-@{
-}
 
+<!--Donate page, diplayed through a razor page-->
 
+<h3>Your Cart</h3>
 
-<h2>Your Cart</h2>
-
+<!--Table displaying the cart of the customer-->
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -16,6 +15,7 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Subtotal</th>
+            <th>Remove</th>
         </tr>
     </thead>
 
@@ -28,9 +28,10 @@
                 <td class="text-right">@line.Project.Price</td>
                 <td class="text-right">@((line.Quantity * line.Project.Price).ToString("c"))</td>
 
+                <!--Button to remove the item from cart-->
                 <td class="text-center">
                     <form asp-page-handler="Remove" method="post">
-                        <input type="hidden" name="ProductID"
+                        <input type="hidden" name="proj"
                                value="@line.Project.ProjectId"/>
                         <input type="hidden" name="returnUrl"
                                value="@Model.ReturnUrl" />
@@ -43,6 +44,7 @@
         }
     </tbody>
 
+    <!--Running total of cart-->
     <tfoot>
         <tr>
             <td colspan="3" class="text-right">Total: </td>

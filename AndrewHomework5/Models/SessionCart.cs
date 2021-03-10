@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace AndrewHomework5.Models
 {
+    //Subclass of the cart model, overriding the AddItem, RemoveLine, and Clear methods so they call the base implementations
     public class SessionCart : Cart
     {
+        //Factory for creating SessionCart objects and providing them with an ISession object
         public static Cart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?

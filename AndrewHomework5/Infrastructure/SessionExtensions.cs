@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace AndrewHomework5.Infrastructure
 {
+    //SessionExtension class to set data to json, and pass json to program
     public static class SessionExtensions
     {
         public static void SetJson(this ISession session, string key, object value)

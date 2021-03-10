@@ -3,16 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AndrewHomework7</title>
+    <title>@ViewData["Title"] - AndrewHomework8</title>
     <!--Imported boostrap from textbook instructions-->
     <link href="/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
 
 </head>
 <body>
     <div class="bg-dark text-white p-2">
-        <span class="navbar-brand ml-2">Assignment 7 - Bookstore</span>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col navbar-brand">BOOKSTORE - Assignment 8</div>
+                <div class="col-6 text-right">
+                    <vc:cart-summary /> <!--Adding cart to all layout pages-->
+                </div>
+            </div>
+        </div>
     </div>
     <br /><br />
+
     <div class="row m-1 p-1">
         <div id="categories" class="col-4">
             <h2>Welcome to the Bookstore</h2>

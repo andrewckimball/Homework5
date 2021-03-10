@@ -40,6 +40,7 @@ namespace AndrewHomework5
             services.AddDistributedMemoryCache();
             services.AddSession();
 
+            //Creating sessionCart objects that will seamlessly store themselves
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

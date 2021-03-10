@@ -9,10 +9,12 @@ using AndrewHomework5.Infrastructure;
 
 namespace AndrewHomework5.Pages
 {
+    //Model relating to the Donate.cshtml page
     public class DonateModel : PageModel
     {
         private IBookstoreRespository repository;
 
+        //Constructor passing in variables
         public DonateModel(IBookstoreRespository repo, Cart cartService)
         {
             repository = repo;
@@ -28,6 +30,8 @@ namespace AndrewHomework5.Pages
             //Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
         }
 
+        //New handler method in the page model class that will receive the request and modify the cart
+        //Method to add items to cart
         public IActionResult OnPost(long projectId, string returnUrl)
         {
             Project project = repository.Projects.FirstOrDefault(p => p.ProjectId == projectId);
@@ -40,6 +44,7 @@ namespace AndrewHomework5.Pages
             return RedirectToPage(new { returnUrl = returnUrl });
         }
 
+        //Method to remove items from cart
         public IActionResult OnPostRemove(long proj, string returnUrl)
         {
             Cart.RemoveLine(Cart.Lines.First(cl => cl.Project.ProjectId == proj).Project);

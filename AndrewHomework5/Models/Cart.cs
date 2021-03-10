@@ -31,17 +31,19 @@ namespace AndrewHomework5.Models
             }
         }
 
+        //Virtual reference to remove books
         public virtual void RemoveLine(Project proj) =>
             Lines.RemoveAll(x => x.Project.ProjectId == proj.ProjectId);
 
         public virtual void Clear() => Lines.Clear();
 
+        //Method to compute the sum of the individual books
         public decimal ComputeTotalSum()
         {
-            //price is hard coded
             return Lines.Sum(e => e.Project.Price * e.Quantity);
         }
 
+        //Creating CartLine class
         public class CartLine
         {
             public int CartLineID { get; set; }

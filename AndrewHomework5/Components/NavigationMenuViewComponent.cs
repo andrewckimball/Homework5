@@ -7,6 +7,7 @@ using AndrewHomework5.Models;
 
 namespace AndrewHomework5.Components
 {
+    //Class to link to the Views/Components/CartSummary/Default.cshtml file
     public class NavigationMenuViewComponent : ViewComponent
     {
         private IBookstoreRespository repository;

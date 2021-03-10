@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AndrewHomework5.Infrastructure
 {
+    //UrlExtenstions static class 
     public static class UrlExtensions
     {
         public static string PathAndQuery(this HttpRequest request) =>
